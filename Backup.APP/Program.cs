@@ -1,8 +1,7 @@
+using Backup.APP.Library;
 using Backup.APP.Views.Forms;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Backup.APP
@@ -15,6 +14,7 @@ namespace Backup.APP
         [STAThread]
         static void Main()
         {
+            Directory.CreateDirectory(Properties.DirectorySettings.FullName);
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

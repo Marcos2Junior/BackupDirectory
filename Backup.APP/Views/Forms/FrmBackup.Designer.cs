@@ -37,19 +37,17 @@ namespace Backup.APP.Views.Forms
             // listBox1
             // 
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(1062, 63);
-            this.listBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.listBox1.ItemHeight = 15;
+            this.listBox1.Location = new System.Drawing.Point(929, 47);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(300, 564);
+            this.listBox1.Size = new System.Drawing.Size(263, 424);
             this.listBox1.TabIndex = 0;
             // 
             // Btn_GetFolder
             // 
-            this.Btn_GetFolder.Location = new System.Drawing.Point(659, 406);
-            this.Btn_GetFolder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Btn_GetFolder.Location = new System.Drawing.Point(577, 304);
             this.Btn_GetFolder.Name = "Btn_GetFolder";
-            this.Btn_GetFolder.Size = new System.Drawing.Size(139, 59);
+            this.Btn_GetFolder.Size = new System.Drawing.Size(122, 44);
             this.Btn_GetFolder.TabIndex = 1;
             this.Btn_GetFolder.Text = "Btn_GetFolder";
             this.Btn_GetFolder.UseVisualStyleBackColor = true;
@@ -57,12 +55,11 @@ namespace Backup.APP.Views.Forms
             // 
             // FrmBackup
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1586, 784);
+            this.ClientSize = new System.Drawing.Size(1388, 588);
             this.Controls.Add(this.Btn_GetFolder);
             this.Controls.Add(this.listBox1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmBackup";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmBackup_Load);

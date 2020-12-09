@@ -2,6 +2,7 @@
 using Backup.APP.Models;
 using System;
 using System.IO;
+using System.Linq;
 using System.Text.Json;
 
 namespace Backup.APP.Classes
@@ -15,33 +16,27 @@ namespace Backup.APP.Classes
             SettingsModel = settingsModel;
         }
 
-        public FoldersBackup()
-        {
-
-        }
-
         public void WriteSettings()
         {
-            File.WriteAllText(Properties.FileSettings.FullName, Encript.Encrypt(JsonSerializer.Serialize(SettingsModel)));
+            File.WriteAllText(Properties.ActiveUser.FileSettings.FullName, Encript.Encrypt(JsonSerializer.Serialize(SettingsModel)));
         }
 
         public void ReadSettings()
         {
-            //checking for file existence is done the moment the application is started
-            string result = File.ReadAllText(Properties.FileSettings.FullName);
+            if (SettingsModel.User.FileSettings?.Exists != true)
+            {
+                return;
+            }
 
             try
             {
-                result = Encript.Decrypt(result);
+                string result = File.ReadAllText(SettingsModel.User.FileSettings.FullName);
+                SettingsModel = JsonSerializer.Deserialize<SettingsModel>(Encript.Decrypt(result));
             }
             catch (Exception)
             {
-                throw new Exception($"The settings file located at {Properties.FileSettings.FullName} " +
-                    "is not a correct format. make sure there is a copy of this file to replace " +
-                    "or remove it to generate new settings.");
+                return;
             }
-
-            SettingsModel = JsonSerializer.Deserialize<SettingsModel>(result);
         }
     }
 }
