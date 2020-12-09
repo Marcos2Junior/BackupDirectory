@@ -71,5 +71,10 @@ namespace Backup.APP.Views.Forms
         {
             ChangeGB();
         }
+
+        private void Btn_Create_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

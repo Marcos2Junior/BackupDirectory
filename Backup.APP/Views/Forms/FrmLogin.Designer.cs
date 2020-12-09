@@ -179,6 +179,7 @@ namespace Backup.APP.Views.Forms
             this.Btn_Create.TabIndex = 5;
             this.Btn_Create.Text = "Create";
             this.Btn_Create.UseVisualStyleBackColor = false;
+            this.Btn_Create.Click += new System.EventHandler(this.Btn_Create_Click);
             // 
             // label8
             // 
