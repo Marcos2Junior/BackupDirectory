@@ -29,9 +29,11 @@ namespace Backup.APP.Views.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.Btn_GetFolder = new System.Windows.Forms.Button();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // listBox1
@@ -53,6 +55,12 @@ namespace Backup.APP.Views.Forms
             this.Btn_GetFolder.UseVisualStyleBackColor = true;
             this.Btn_GetFolder.Click += new System.EventHandler(this.button1_Click);
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
             // FrmBackup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -72,6 +80,7 @@ namespace Backup.APP.Views.Forms
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button Btn_GetFolder;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
