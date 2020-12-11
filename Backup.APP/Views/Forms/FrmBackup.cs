@@ -29,6 +29,8 @@ namespace Backup.APP.Views.Forms
 
             startupApp.RemoveStartWithWindows();
 
+            startupApp.CloseRegistry();
+
             notifyIcon1.Text = "Backup directory";
             notifyIcon1.Icon = Resources.notify;
         }
@@ -43,17 +45,25 @@ namespace Backup.APP.Views.Forms
 
         private void FrmBackup_Load(object sender, EventArgs e)
         {
-            //if (Properties.ActiveUser == null)
-            //{
-            //    FrmLogin frmLogin = new FrmLogin();
-            //    frmLogin.ShowDialog();
+            if (Properties.ActiveUser == null)
+            {
+                FrmLogin frmLogin = new FrmLogin();
+                frmLogin.ShowDialog();
 
-            //    if (!frmLogin.Sucess)
-            //    {
-            //        Close();
-            //        return;
-            //    }
-            //}
+                if (!frmLogin.Sucess)
+                {
+                    Close();
+                    return;
+                }
+            }
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            if(Properties.ActiveUser != null)
+            {
+                base.OnShown(e);
+            }
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
