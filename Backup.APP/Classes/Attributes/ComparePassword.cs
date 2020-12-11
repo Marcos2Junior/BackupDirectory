@@ -12,7 +12,7 @@ namespace Backup.APP.Classes.Attributes
         {
             var validationResult = base.IsValid(value, validationContext);
 
-            if (string.IsNullOrEmpty(validationResult.ErrorMessage))
+            if (string.IsNullOrEmpty(validationResult?.ErrorMessage))
             {
                 return ValidationResult.Success;
             }

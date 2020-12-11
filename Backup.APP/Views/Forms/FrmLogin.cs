@@ -46,7 +46,8 @@ namespace Backup.APP.Views.Forms
                 {
                     UserName = model.UserName,
                     Password = model.Password,
-                    PasswordHint = model.PasswordHint
+                    PasswordHint = model.PasswordHint,
+                    FileSettings = string.Empty
                 };
 
                 new FoldersBackup(new SettingsModel
@@ -124,7 +125,9 @@ namespace Backup.APP.Views.Forms
             Login login = new Login(new User
             {
                 UserName = Txt_username.Text,
-                Password = Txt_password.Text
+                Password = Txt_password.Text,
+                //for set new fileinfo
+                FileSettings = string.Empty
             });
 
             var response = login.CheckLogin();

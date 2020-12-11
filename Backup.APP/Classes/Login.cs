@@ -21,9 +21,8 @@ namespace Backup.APP.Classes
             };
 
             FoldersBackup foldersBackup = new FoldersBackup(settingsModel);
-            foldersBackup.ReadSettings();
 
-            if(foldersBackup.SettingsModel != null)
+            if(foldersBackup.ReadSettings())
             {
                 Properties.ActiveUser = foldersBackup.SettingsModel.User;
                 return new Response { Mensagem = "Login efetuado com sucesso!", Success = true };

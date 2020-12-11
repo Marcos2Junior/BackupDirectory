@@ -18,24 +18,32 @@ namespace Backup.APP.Classes
 
         public void WriteSettings()
         {
-            File.WriteAllText(Properties.ActiveUser.FileSettings.FullName, Encript.Encrypt(JsonSerializer.Serialize(SettingsModel)));
+            var sw = new StreamWriter(Properties.ActiveUser.FileSettings);
+            sw.Write(Encript.Encrypt(JsonSerializer.Serialize(SettingsModel)));
+            sw.Close();
         }
 
-        public void ReadSettings()
+        /// <summary>
+        /// read file settings of user
+        /// </summary>
+        /// <returns>true if user password is correct to decript file settings</returns>
+        public bool ReadSettings()
         {
-            if (SettingsModel.User.FileSettings?.Exists != true)
+            if (!File.Exists(SettingsModel.User.FileSettings))
             {
-                return;
+                return false;
             }
 
             try
             {
-                string result = File.ReadAllText(SettingsModel.User.FileSettings.FullName);
-                SettingsModel = JsonSerializer.Deserialize<SettingsModel>(Encript.Decrypt(result));
+                string result = File.ReadAllText(SettingsModel.User.FileSettings);
+                SettingsModel = JsonSerializer.Deserialize<SettingsModel>(Encript.Decrypt(result, SettingsModel.User.Password));
+
+                return SettingsModel != null;
             }
             catch (Exception)
             {
-                return;
+                return false;
             }
         }
     }

@@ -8,6 +8,15 @@ namespace Backup.APP.Models
         public string UserName { get; set; }
         public string Password { get; set; }
         public string PasswordHint { get; set; }
-        public FileInfo FileSettings  => new FileInfo(Path.Combine(Properties.DirectorySettings.FullName, UserName?.ToLower()));
+
+        private string fileSettings;
+        public string FileSettings
+        {
+            get { return fileSettings; }
+            set 
+            { 
+                fileSettings = new FileInfo(Path.Combine(Properties.DirectorySettings.FullName, UserName?.ToLower())).FullName;  
+            }
+        }
     }
 }

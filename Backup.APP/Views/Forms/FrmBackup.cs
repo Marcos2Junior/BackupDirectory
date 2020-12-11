@@ -19,7 +19,11 @@ namespace Backup.APP.Views.Forms
         public FrmBackup()
         {
             InitializeComponent();
+            Login();
+        }
 
+        private void Startup()
+        {
             StartupApp startupApp = new StartupApp();
 
             if (!startupApp.StartWithWindows)
@@ -30,9 +34,6 @@ namespace Backup.APP.Views.Forms
             startupApp.RemoveStartWithWindows();
 
             startupApp.CloseRegistry();
-
-            notifyIcon1.Text = "Backup directory";
-            notifyIcon1.Icon = Resources.notify;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,6 +46,11 @@ namespace Backup.APP.Views.Forms
 
         private void FrmBackup_Load(object sender, EventArgs e)
         {
+            Login();
+        }
+
+        private void Login()
+        {
             if (Properties.ActiveUser == null)
             {
                 FrmLogin frmLogin = new FrmLogin();
@@ -52,24 +58,24 @@ namespace Backup.APP.Views.Forms
 
                 if (!frmLogin.Sucess)
                 {
-                    Close();
-                    return;
+                    allowClose = true;
+                }
+                else
+                {
+                    ShowForm();
                 }
             }
         }
 
-        protected override void OnShown(EventArgs e)
+        private void ShowForm()
         {
-            if(Properties.ActiveUser != null)
-            {
-                base.OnShown(e);
-            }
+            allowVisible = true;
+            Show();
         }
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            allowVisible = true;
-            Show();
+            ShowForm();  
         }
 
         protected override void SetVisibleCore(bool value)
@@ -81,6 +87,8 @@ namespace Backup.APP.Views.Forms
             }
 
             base.SetVisibleCore(value);
+
+            if(allowClose) { Close(); }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
