@@ -6,7 +6,7 @@ namespace Backup.APP.Library
     public static class Properties
     {
         public static DirectoryInfo DirectorySettings = new DirectoryInfo(Path.Combine(Directory.GetCurrentDirectory(), $"appSettings"));
-
         public static User ActiveUser;
+        public static SettingsModel SettingsModel;
     }
 }

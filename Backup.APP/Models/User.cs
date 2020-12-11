@@ -1,5 +1,6 @@
 ﻿using Backup.APP.Library;
 using System.IO;
+using System.Text.Json.Serialization;
 
 namespace Backup.APP.Models
 {
@@ -9,13 +10,16 @@ namespace Backup.APP.Models
         public string Password { get; set; }
         public string PasswordHint { get; set; }
 
+        [JsonIgnore]
+        public SettingsModel SettingsModel { get; set; }
+
         private string fileSettings;
         public string FileSettings
         {
             get { return fileSettings; }
-            set 
-            { 
-                fileSettings = new FileInfo(Path.Combine(Properties.DirectorySettings.FullName, UserName?.ToLower())).FullName;  
+            set
+            {
+                fileSettings = new FileInfo(Path.Combine(Properties.DirectorySettings.FullName, UserName?.ToLower())).FullName;
             }
         }
     }

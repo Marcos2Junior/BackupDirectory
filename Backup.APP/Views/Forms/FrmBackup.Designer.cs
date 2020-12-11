@@ -32,19 +32,10 @@ namespace Backup.APP.Views.Forms
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmBackup));
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.listBox1 = new System.Windows.Forms.ListBox();
             this.Btn_GetFolder = new System.Windows.Forms.Button();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.Tv_backups = new System.Windows.Forms.TreeView();
             this.SuspendLayout();
-            // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 15;
-            this.listBox1.Location = new System.Drawing.Point(929, 47);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(263, 424);
-            this.listBox1.TabIndex = 0;
             // 
             // Btn_GetFolder
             // 
@@ -63,13 +54,20 @@ namespace Backup.APP.Views.Forms
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
+            // Tv_backups
+            // 
+            this.Tv_backups.Location = new System.Drawing.Point(912, 74);
+            this.Tv_backups.Name = "Tv_backups";
+            this.Tv_backups.Size = new System.Drawing.Size(375, 406);
+            this.Tv_backups.TabIndex = 2;
+            // 
             // FrmBackup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1388, 588);
+            this.Controls.Add(this.Tv_backups);
             this.Controls.Add(this.Btn_GetFolder);
-            this.Controls.Add(this.listBox1);
             this.Name = "FrmBackup";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.FrmBackup_Load);
@@ -80,9 +78,9 @@ namespace Backup.APP.Views.Forms
         #endregion
 
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button Btn_GetFolder;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.TreeView Tv_backups;
     }
 }
 
