@@ -13,6 +13,8 @@ namespace Backup.APP.Models
         [JsonIgnore]
         public SettingsModel SettingsModel { get; set; }
 
+        public RememberUser RememberUser { get; set; } = new RememberUser();
+
         private string fileSettings;
         public string FileSettings
         {

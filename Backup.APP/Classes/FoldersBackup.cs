@@ -2,7 +2,6 @@
 using Backup.APP.Models;
 using System;
 using System.IO;
-using System.Linq;
 using System.Text.Json;
 
 namespace Backup.APP.Classes
@@ -14,6 +13,10 @@ namespace Backup.APP.Classes
         public FoldersBackup(SettingsModel settingsModel)
         {
             SettingsModel = settingsModel;
+            if (Properties.ActiveUser != null)
+            {
+                SettingsModel.User = Properties.ActiveUser;
+            }
         }
 
         public void WriteSettings()

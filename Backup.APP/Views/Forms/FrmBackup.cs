@@ -1,4 +1,5 @@
 ﻿using Backup.APP.Classes;
+using Backup.APP.Classes.Themes;
 using Backup.APP.Library;
 using Backup.APP.Models;
 using System;
@@ -159,6 +160,41 @@ namespace Backup.APP.Views.Forms
                 e.Cancel = true;
             }
             base.OnFormClosing(e);
+        }
+
+        private void ucNewBackup1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BTN_close_Click(object sender, EventArgs e)
+        {
+            var dialogResult = MessageBox.Show("If you close the application, it will not be possible to perform backups.\n\n" +
+                "You can choose to minimize, so that the application runs in the background and you can open " +
+                "it whenever you want by clicking on \"Hidden icons\" in your taskbar.",
+                "Are you sure you want to close the application?",
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Question);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                allowClose = true;
+                Close();
+            }
+        }
+
+        private void BTN_minimize_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The application will continue to run normally and you can open it by clicking on \"hidden icons\" on your taskbar",
+                "Application will be minimized",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+            Close();
+        }
+
+        private void BTN_theme_Click(object sender, EventArgs e)
+        {
+             new DarkTheme().ChooseTheme();
         }
     }
 }

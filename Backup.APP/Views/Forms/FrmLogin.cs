@@ -52,7 +52,7 @@ namespace Backup.APP.Views.Forms
 
                 new FoldersBackup(new SettingsModel
                 {
-                    User = Properties.ActiveUser
+                    FoldersBackupModels = new List<FoldersBackupModel>()
                 }).WriteSettings();
 
                 Txt_username_create.Clear();
