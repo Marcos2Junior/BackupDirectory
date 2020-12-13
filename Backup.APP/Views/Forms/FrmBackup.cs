@@ -75,17 +75,7 @@ namespace Backup.APP.Views.Forms
             Properties.SettingsModel.FoldersBackupModels.Add(folderBackup);
             AddTreeNodeBackup(folderBackup);
 
-            try
-            {
-                new FoldersBackup(Properties.SettingsModel).WriteSettings();
-            }
-            catch (Exception ex)
-            {
-                //verificar oq fazer pq pode acontecer de na tentativa de gravar, acabar perdendo o registro do txt
-                //nesse caso pensar em tentar gravar a propriedade Properties.SettingsModel em um outro arquivo ou algo assim ..
-
-                throw;
-            }
+            new FoldersBackup(Properties.SettingsModel).WriteSettings();
         }
 
 
@@ -113,13 +103,26 @@ namespace Backup.APP.Views.Forms
         {
             if (Properties.ActiveUser == null)
             {
-                FrmLogin frmLogin = new FrmLogin();
-                frmLogin.ShowDialog();
+                bool success = false;
 
-                if (!frmLogin.Sucess)
+                //checks if an application is running
+                var process = System.Diagnostics.Process.GetCurrentProcess();
+                var processRunning = System.Diagnostics.Process.GetProcessesByName(process.ProcessName).Any(x => x.Id != process.Id);
+
+                //checks if existis form open
+                var frmLoginOpen = Application.OpenForms[nameof(FrmLogin)] != null;
+
+                if (!processRunning && !frmLoginOpen)
+                {
+                    FrmLogin frmLogin = new FrmLogin();
+                    frmLogin.ShowDialog();
+
+                    success = frmLogin.Sucess;
+                }
+
+                if (!success)
                 {
                     allowClose = true;
-                    Close();
                 }
                 else
                 {
@@ -208,7 +211,7 @@ namespace Backup.APP.Views.Forms
         {
             string nameTheme = Properties.ActiveUser.RememberUser.Theme;
 
-            if(nameTheme == nameof(DarkTheme))
+            if (nameTheme == nameof(DarkTheme))
             {
                 if (change)
                 {
@@ -240,7 +243,7 @@ namespace Backup.APP.Views.Forms
                 case Keys.F12:
                     var dialogResult = MessageBox.Show("Log out?", string.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
 
-                    if(dialogResult == DialogResult.OK)
+                    if (dialogResult == DialogResult.OK)
                     {
                         Properties.ActiveUser = null;
                         Properties.SettingsModel = null;
@@ -252,7 +255,7 @@ namespace Backup.APP.Views.Forms
                 default:
                     break;
             }
-            
+
         }
     }
 }

@@ -21,9 +21,16 @@ namespace Backup.APP.Classes
 
         public void WriteSettings()
         {
-            var sw = new StreamWriter(Properties.ActiveUser.FileSettings);
-            sw.Write(Encript.Encrypt(JsonSerializer.Serialize(SettingsModel)));
-            sw.Close();
+            try
+            {
+                var sw = new StreamWriter(Properties.ActiveUser.FileSettings);
+                sw.Write(Encript.Encrypt(JsonSerializer.Serialize(SettingsModel)));
+                sw.Close();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         /// <summary>
