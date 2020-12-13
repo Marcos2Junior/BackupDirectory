@@ -127,6 +127,10 @@ namespace Backup.APP.Views.Forms
                     ChooseTheme(false);
                 }
             }
+            else
+            {
+                ShowForm();
+            }
         }
 
         private void ShowForm()
@@ -137,7 +141,7 @@ namespace Backup.APP.Views.Forms
 
         private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            ShowForm();
+            Login();
         }
 
         protected override void SetVisibleCore(bool value)
@@ -201,6 +205,8 @@ namespace Backup.APP.Views.Forms
 
         private void ChooseTheme(bool change)
         {
+
+
             if (Properties.ActiveUser.RememberUser.Theme == nameof(DarkTheme) && change)
             {
                 var lightTheme = new LightTheme();
@@ -213,6 +219,28 @@ namespace Backup.APP.Views.Forms
                 darkTheme.ChooseTheme(new OpenForms());
                 Properties.ActiveUser.RememberUser.Theme = nameof(DarkTheme);
             }
+        }
+
+        private void FrmBackup_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.F12:
+                    var dialogResult = MessageBox.Show("Log out?", string.Empty, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                    if(dialogResult == DialogResult.OK)
+                    {
+                        Properties.ActiveUser = null;
+                        Properties.SettingsModel = null;
+                        Close();
+                        Login();
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }

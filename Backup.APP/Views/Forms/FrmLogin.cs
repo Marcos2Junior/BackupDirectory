@@ -14,6 +14,7 @@ namespace Backup.APP.Views.Forms
     {
         #region 1 - fields
         public bool Sucess { get; set; } = false;
+        public GlobalUser GlobalUser { get; set; }
 
         #endregion
 
@@ -22,6 +23,13 @@ namespace Backup.APP.Views.Forms
         {
             InitializeComponent();
             TransparencyKey = SystemColors.HotTrack;
+
+            GlobalUser = GlobalSettings.GetGlobalUser();
+            Txt_username.Text = GlobalUser.LastUserLogin;
+            if (!string.IsNullOrEmpty(Txt_username.Text))
+            {
+                Txt_password.Select();
+            }
         }
         #endregion
 
@@ -137,6 +145,7 @@ namespace Backup.APP.Views.Forms
             //if true, close this form and continue execution in event load form FrmBackup
             if (Sucess)
             {
+                GlobalSettings.WriteConfig();
                 Close();
             }
             else
@@ -233,5 +242,29 @@ namespace Backup.APP.Views.Forms
         #endregion
 
         #endregion
+
+        private void Lbl_forgotPassword_Click(object sender, EventArgs e)
+        {
+            string message = string.Empty;
+
+            if (!string.IsNullOrEmpty(Txt_username.Text))
+            {
+                var userSettings = GlobalUser.ConfigGlobalUser.FirstOrDefault(x => x.UserName == Txt_username.Text);
+                if (userSettings != null)
+                {
+                    message = $"Your password hint is \"{userSettings.PasswordHint}\"";
+                }
+                else
+                {
+                    message = $"Username not found";
+                }
+            }
+            else
+            {
+                message = "Enter your username first";
+            }
+            
+            MessageBox.Show(message, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
