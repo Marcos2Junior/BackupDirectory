@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace Backup.APP.Views.Forms
 {
-    public partial class FrmBackup : Form
+    public partial class FrmBackup : MainForm
     {
         private bool allowVisible;
         private bool allowClose;
@@ -23,33 +23,20 @@ namespace Backup.APP.Views.Forms
         {
             InitializeComponent();
             Login();
+            AddEvents();
         }
 
-        private void Startup()
+        private void AddEvents()
         {
-            StartupApp startupApp = new StartupApp();
-
-            if (!startupApp.StartWithWindows)
-            {
-                startupApp.SetStartup();
-            }
-
-            startupApp.RemoveStartWithWindows();
-
-            startupApp.CloseRegistry();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (folderBrowserDialog1.ShowDialog() == DialogResult.OK)
-            {
-
-            }
-        }
-
-        private void FrmBackup_Load(object sender, EventArgs e)
-        {
-            Login();
+            BTN_activity.Click += new EventHandler(ClickButtonsMenu);
+            BTN_index.Click += new EventHandler(ClickButtonsMenu);
+            BTN_info.Click += new EventHandler(ClickButtonsMenu);
+            BTN_newbackup.Click += new EventHandler(ClickButtonsMenu);
+            BTN_settings.Click += new EventHandler(ClickButtonsMenu);
+            BTN_usermenu.Click += new EventHandler(ClickButtonsMenu);
+            P_top.MouseDown += new MouseEventHandler(MouseDown);
+            P_top.MouseMove += new MouseEventHandler(MouseMove);
+            P_top.MouseUp += new MouseEventHandler(MouseUp);
         }
 
         private void UserLoad()
@@ -126,6 +113,7 @@ namespace Backup.APP.Views.Forms
                 }
                 else
                 {
+                    ucWelcome1.BringToFront();
                     UserLoad();
                     ShowForm();
                     ChooseTheme(false);
@@ -133,6 +121,7 @@ namespace Backup.APP.Views.Forms
             }
             else
             {
+                ucIndex1.BringToFront();
                 ShowForm();
             }
         }
@@ -256,6 +245,42 @@ namespace Backup.APP.Views.Forms
                     break;
             }
 
+        }
+
+        private void ClickButtonsMenu(object sender, EventArgs e)
+        {
+            var btn = (Button)sender;
+            SelectedButtonMenu(btn.Location.X, btn.Size.Width);
+
+            switch (btn.Name)
+            {
+                case nameof(BTN_activity):
+                    ucActivity1.BringToFront();
+                    break;
+                case nameof(BTN_index):
+                    ucIndex1.BringToFront();
+                    break;
+                case nameof(BTN_info):
+                    ucInfo1.BringToFront();
+                    break;
+                case nameof(BTN_newbackup):
+                    ucNewBackup1.BringToFront();
+                    break;
+                case nameof(BTN_settings):
+                    ucSettings1.BringToFront();
+                    break;
+                case nameof(BTN_usermenu):
+                    ucUserAccount1.BringToFront();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void SelectedButtonMenu(int locationX, int width)
+        {
+            P_selectedButton.Location = new Point(locationX, 34);
+            P_selectedButton.Size = new Size(width, 10);
         }
     }
 }

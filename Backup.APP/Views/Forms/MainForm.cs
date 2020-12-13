@@ -8,7 +8,7 @@ namespace Backup.APP.Views.Forms
         private bool dragging = false;
         private Point dragCursorPoint;
         private Point dragFormPoint;
-        protected new void MouseMove()
+        protected new void MouseMove(object sender, MouseEventArgs e)
         {
             if (dragging)
             {
@@ -16,14 +16,14 @@ namespace Backup.APP.Views.Forms
                 Location = Point.Add(dragFormPoint, new Size(dif));
             }
         }
-        protected new void MouseDown()
+        protected new void MouseDown(object sender, MouseEventArgs e)
         {
             dragging = true;
             dragCursorPoint = Cursor.Position;
             dragFormPoint = Location;
         }
 
-        protected new void MouseUp()
+        protected new void MouseUp(object sender, MouseEventArgs e)
         {
             dragging = false;
         }

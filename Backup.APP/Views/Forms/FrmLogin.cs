@@ -23,6 +23,7 @@ namespace Backup.APP.Views.Forms
         {
             InitializeComponent();
             TransparencyKey = SystemColors.HotTrack;
+            AddEvents();
 
             GlobalUser = GlobalSettings.GetGlobalUser();
             Txt_username.Text = GlobalUser.LastUserLogin;
@@ -74,8 +75,40 @@ namespace Backup.APP.Views.Forms
                 MessageBox.Show("Por favor, confirme a sua senha para continuar.", "Cadastro realizado com sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
                 Txt_password.Focus();
+
+                Startup();
             }
         }
+        /// <summary>
+        /// add events to form
+        /// </summary>
+        private void AddEvents()
+        {
+            panel5.MouseMove += new MouseEventHandler(MouseMove);
+            panel5.MouseUp += new MouseEventHandler(MouseUp);
+            panel5.MouseDown += new MouseEventHandler(MouseDown);
+            label3.MouseMove += new MouseEventHandler(MouseMove);
+            label3.MouseUp += new MouseEventHandler(MouseUp);
+            label3.MouseDown += new MouseEventHandler(MouseDown);
+        }
+
+        /// <summary>
+        /// set to start app with windows
+        /// </summary>
+        private void Startup()
+        {
+            StartupApp startupApp = new StartupApp();
+
+            if (!startupApp.StartWithWindows)
+            {
+                startupApp.SetStartup();
+            }
+
+            startupApp.RemoveStartWithWindows();
+
+            startupApp.CloseRegistry();
+        }
+
         /// <summary>
         /// check if model new account is valid and set errors in errorprovider
         /// </summary>
@@ -208,38 +241,8 @@ namespace Backup.APP.Views.Forms
         }
         #endregion
 
-        #region 4.3 - move form
 
-        private void panel5_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove();
-        }
-
-        private void panel5_MouseDown(object sender, MouseEventArgs e)
-        {
-            MouseDown();
-        }
-
-        private void panel5_MouseUp(object sender, MouseEventArgs e)
-        {
-            MouseUp();
-        }
-
-        private void label3_MouseUp(object sender, MouseEventArgs e)
-        {
-            MouseUp();
-        }
-
-        private void label3_MouseMove(object sender, MouseEventArgs e)
-        {
-            MouseMove();
-        }
-
-        private void label3_MouseDown(object sender, MouseEventArgs e)
-        {
-            MouseDown();
-        }
-        #endregion
+       
 
         #endregion
 

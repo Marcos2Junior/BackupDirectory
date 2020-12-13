@@ -392,9 +392,6 @@ namespace Backup.APP.Views.Forms
             this.label3.Size = new System.Drawing.Size(515, 70);
             this.label3.TabIndex = 1;
             this.label3.Text = "DirectoryBackup";
-            this.label3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label3_MouseDown);
-            this.label3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label3_MouseMove);
-            this.label3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label3_MouseUp);
             // 
             // panel3
             // 
@@ -419,9 +416,6 @@ namespace Backup.APP.Views.Forms
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(712, 61);
             this.panel5.TabIndex = 4;
-            this.panel5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseDown);
-            this.panel5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseMove);
-            this.panel5.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel5_MouseUp);
             // 
             // errorProvider1
             // 
