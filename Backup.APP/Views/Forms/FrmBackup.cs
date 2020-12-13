@@ -282,5 +282,23 @@ namespace Backup.APP.Views.Forms
             P_selectedButton.Location = new Point(locationX, 34);
             P_selectedButton.Size = new Size(width, 10);
         }
+
+        public void StartProgressBar(string description, Action action)
+        {
+            ucLoading1.LBL_description.Text = description;
+            ucLoading1.LBL_operation.Text = "checking process ...";
+            ucLoading1.LBL_percent.Text = "0%";
+
+            ucLoading1.BringToFront();
+            Task task = new Task(action);
+            task.Start();
+        }
+
+     
+
+        private void BTN_activity_Click(object sender, EventArgs e)
+        {
+           
+        }
     }
 }

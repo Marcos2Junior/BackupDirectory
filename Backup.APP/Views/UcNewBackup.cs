@@ -1,5 +1,6 @@
 ﻿using Backup.APP.Library;
 using Backup.APP.Models;
+using Backup.APP.Views.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,7 +24,7 @@ namespace Backup.APP.Views
 
         private void Load()
         {
-            if(FoldersBackupModel != null)
+            if (FoldersBackupModel != null)
             {
                 //txt
             }
@@ -88,15 +89,38 @@ namespace Backup.APP.Views
                 {
                     if ((Button)sender == BTN_newsource)
                     {
-                        TXT_source.Text = folderBrowserDialog1.SelectedPath;
-                        Properties.SettingsModel.User.RememberUser.LastDirectorySource = folderBrowserDialog1.SelectedPath;
-
-                        var files = new DirectoryInfo(folderBrowserDialog1.SelectedPath).GetFiles("*.*", SearchOption.AllDirectories);
+                        var frm = (FrmBackup)Application.OpenForms[nameof(FrmBackup)];
+                        frm.ucLoading1.BringToFront();
                         CLB_ignoreFiles.Items.Clear();
-                        foreach (FileInfo file in files)
+                        frm.StartProgressBar("Selecting files", new Action(() =>
                         {
-                            CLB_ignoreFiles.Items.Add($"{file.Directory.Name} / {file.Name}");
-                        }
+                            frm.ucLoading1.UpdateProgressBar(0, $"selecting directory {folderBrowserDialog1.SelectedPath}");
+                            System.Threading.Thread.Sleep(1000);
+
+                            TXT_source.Invoke(new Action(() => TXT_source.Text = folderBrowserDialog1.SelectedPath));
+
+                            Properties.SettingsModel.User.RememberUser.LastDirectorySource = folderBrowserDialog1.SelectedPath;
+                            frm.ucLoading1.UpdateProgressBar(0, "adding directory path in user memory");
+                            System.Threading.Thread.Sleep(1000);
+
+                            var files = new DirectoryInfo(folderBrowserDialog1.SelectedPath).GetFiles("*.*", SearchOption.AllDirectories);
+
+                            frm.ucLoading1.UpdateProgressBar(0, $"selecting {files.Length} files");
+                            System.Threading.Thread.Sleep(1000);
+
+                            for (int i = 0; i < files.Length; i++)
+                            {
+                                string fileName = $"{files[i].Directory.Name} / {files[i].Name}";
+                                frm.ucLoading1.UpdateProgressBar(SelectPercentToProgress(i, files.Length), $"checking file {fileName }");
+                                CLB_ignoreFiles.Invoke(new Action(() => CLB_ignoreFiles.Items.Add(fileName)));
+                            }
+
+                            frm.ucLoading1.UpdateProgressBar(100, $"successfull");
+
+                            System.Threading.Thread.Sleep(1000);
+                            frm.Invoke(new Action(() => frm.ucNewBackup1.BringToFront()));
+                        }));
+
                     }
                     else
                     {
@@ -105,6 +129,18 @@ namespace Backup.APP.Views
                     }
                 }
             }
+        }
+
+        private int SelectPercentToProgress(int value, int total)
+        {
+            var interval = total / 100;
+            if (value == 0) { value++; }
+
+            if(interval == 0) { return 100; }
+
+            var percent = value / interval;
+
+            return percent > 100 ? 100 : percent;
         }
 
         private string SelectedPath(Button button)
@@ -127,16 +163,6 @@ namespace Backup.APP.Views
         {
             BTN_newsource.Click += new EventHandler(LoadDirectory);
             BTN_newtarget.Click += new EventHandler(LoadDirectory);
-        }
-
-        private void UcNewBackup_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UcNewBackup_Load_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

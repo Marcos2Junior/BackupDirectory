@@ -61,6 +61,7 @@ namespace Backup.APP.Views.Forms
             this.ucUserAccount1 = new Backup.APP.Views.UcUserAccount();
             this.ucSettings1 = new Backup.APP.Views.UcSettings();
             this.ucActivity1 = new Backup.APP.Views.UcActivity();
+            this.ucLoading1 = new Backup.APP.Views.UcLoading();
             this.groupBox1.SuspendLayout();
             this.P_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_logo)).BeginInit();
@@ -396,12 +397,22 @@ namespace Backup.APP.Views.Forms
             this.ucActivity1.Size = new System.Drawing.Size(1079, 577);
             this.ucActivity1.TabIndex = 5;
             // 
+            // ucLoading1
+            // 
+            this.ucLoading1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.ucLoading1.ForeColor = System.Drawing.SystemColors.Control;
+            this.ucLoading1.Location = new System.Drawing.Point(541, 157);
+            this.ucLoading1.Name = "ucLoading1";
+            this.ucLoading1.Size = new System.Drawing.Size(1079, 577);
+            this.ucLoading1.TabIndex = 34;
+            // 
             // FrmBackup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1667, 770);
+            this.Controls.Add(this.ucLoading1);
             this.Controls.Add(this.ucActivity1);
             this.Controls.Add(this.ucSettings1);
             this.Controls.Add(this.ucUserAccount1);
@@ -467,6 +478,7 @@ namespace Backup.APP.Views.Forms
         private UcUserAccount ucUserAccount1;
         private UcSettings ucSettings1;
         private UcActivity ucActivity1;
+        public UcLoading ucLoading1;
     }
 }
 
