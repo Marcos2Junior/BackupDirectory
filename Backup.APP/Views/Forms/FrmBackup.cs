@@ -119,6 +119,7 @@ namespace Backup.APP.Views.Forms
                 if (!frmLogin.Sucess)
                 {
                     allowClose = true;
+                    Close();
                 }
                 else
                 {
@@ -205,19 +206,30 @@ namespace Backup.APP.Views.Forms
 
         private void ChooseTheme(bool change)
         {
+            string nameTheme = Properties.ActiveUser.RememberUser.Theme;
 
-
-            if (Properties.ActiveUser.RememberUser.Theme == nameof(DarkTheme) && change)
+            if(nameTheme == nameof(DarkTheme))
             {
-                var lightTheme = new LightTheme();
-                lightTheme.ChooseTheme(new OpenForms());
-                Properties.ActiveUser.RememberUser.Theme = nameof(LightTheme);
+                if (change)
+                {
+                    new LightTheme().ChooseTheme(new OpenForms());
+
+                }
+                else
+                {
+                    new DarkTheme().ChooseTheme(new OpenForms());
+                }
             }
             else
             {
-                var darkTheme = new DarkTheme();
-                darkTheme.ChooseTheme(new OpenForms());
-                Properties.ActiveUser.RememberUser.Theme = nameof(DarkTheme);
+                if (change)
+                {
+                    new DarkTheme().ChooseTheme(new OpenForms());
+                }
+                else
+                {
+                    new LightTheme().ChooseTheme(new OpenForms());
+                }
             }
         }
 

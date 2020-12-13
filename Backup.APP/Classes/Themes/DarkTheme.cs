@@ -7,6 +7,7 @@ namespace Backup.APP.Classes.Themes
     {
         public void ChooseTheme(OpenForms openForms)
         {
+            Properties.ActiveUser.RememberUser.Theme = nameof(DarkTheme);
             #region frmbackup
             #region backcolor
             openForms.FrmBackup.BackColor = SystemColors.Desktop;
