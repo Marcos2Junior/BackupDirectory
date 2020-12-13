@@ -124,6 +124,7 @@ namespace Backup.APP.Views.Forms
                 {
                     UserLoad();
                     ShowForm();
+                    ChooseTheme(false);
                 }
             }
         }
@@ -194,7 +195,24 @@ namespace Backup.APP.Views.Forms
 
         private void BTN_theme_Click(object sender, EventArgs e)
         {
-             new DarkTheme().ChooseTheme();
+            ChooseTheme(true);
+            new FoldersBackup(Properties.SettingsModel).WriteSettings();
+        }
+
+        private void ChooseTheme(bool change)
+        {
+            if (Properties.ActiveUser.RememberUser.Theme == nameof(DarkTheme) && change)
+            {
+                var lightTheme = new LightTheme();
+                lightTheme.ChooseTheme(new OpenForms());
+                Properties.ActiveUser.RememberUser.Theme = nameof(LightTheme);
+            }
+            else
+            {
+                var darkTheme = new DarkTheme();
+                darkTheme.ChooseTheme(new OpenForms());
+                Properties.ActiveUser.RememberUser.Theme = nameof(DarkTheme);
+            }
         }
     }
 }

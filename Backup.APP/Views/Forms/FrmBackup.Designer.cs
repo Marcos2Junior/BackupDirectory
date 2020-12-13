@@ -43,16 +43,16 @@ namespace Backup.APP.Views.Forms
             this.BTN_usermenu = new System.Windows.Forms.Button();
             this.BTN_theme = new System.Windows.Forms.Button();
             this.BTN_settings = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PB_logo = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.BTN_newbackup = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.P_top.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -64,8 +64,9 @@ namespace Backup.APP.Views.Forms
             // 
             // Tv_backups
             // 
-            this.Tv_backups.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.Tv_backups.Location = new System.Drawing.Point(29, 37);
+            this.Tv_backups.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.Tv_backups.ForeColor = System.Drawing.SystemColors.Control;
+            this.Tv_backups.Location = new System.Drawing.Point(29, 27);
             this.Tv_backups.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Tv_backups.Name = "Tv_backups";
             this.Tv_backups.Size = new System.Drawing.Size(428, 587);
@@ -93,7 +94,7 @@ namespace Backup.APP.Views.Forms
             // ucNewBackup1
             // 
             this.ucNewBackup1.BackColor = System.Drawing.SystemColors.Desktop;
-            this.ucNewBackup1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.ucNewBackup1.ForeColor = System.Drawing.SystemColors.Control;
             this.ucNewBackup1.Location = new System.Drawing.Point(541, 159);
             this.ucNewBackup1.Name = "ucNewBackup1";
             this.ucNewBackup1.Size = new System.Drawing.Size(1079, 575);
@@ -127,10 +128,11 @@ namespace Backup.APP.Views.Forms
             // 
             // P_top
             // 
+            this.P_top.BackColor = System.Drawing.SystemColors.Desktop;
             this.P_top.Controls.Add(this.BTN_usermenu);
             this.P_top.Controls.Add(this.BTN_theme);
             this.P_top.Controls.Add(this.BTN_settings);
-            this.P_top.Controls.Add(this.pictureBox1);
+            this.P_top.Controls.Add(this.PB_logo);
             this.P_top.Controls.Add(this.label2);
             this.P_top.Controls.Add(this.BTN_minimize);
             this.P_top.Controls.Add(this.BTN_close);
@@ -177,14 +179,14 @@ namespace Backup.APP.Views.Forms
             this.BTN_settings.TabIndex = 11;
             this.BTN_settings.UseVisualStyleBackColor = true;
             // 
-            // pictureBox1
+            // PB_logo
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(58, 62);
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
+            this.PB_logo.Image = ((System.Drawing.Image)(resources.GetObject("PB_logo.Image")));
+            this.PB_logo.Location = new System.Drawing.Point(12, 12);
+            this.PB_logo.Name = "PB_logo";
+            this.PB_logo.Size = new System.Drawing.Size(58, 62);
+            this.PB_logo.TabIndex = 10;
+            this.PB_logo.TabStop = false;
             // 
             // label2
             // 
@@ -234,19 +236,21 @@ namespace Backup.APP.Views.Forms
             this.panel6.Size = new System.Drawing.Size(1659, 4);
             this.panel6.TabIndex = 26;
             // 
-            // button2
+            // BTN_newbackup
             // 
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(541, 102);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(221, 43);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "Add a new backup folder";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
+            this.BTN_newbackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTN_newbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_newbackup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BTN_newbackup.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTN_newbackup.Image = ((System.Drawing.Image)(resources.GetObject("BTN_newbackup.Image")));
+            this.BTN_newbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTN_newbackup.Location = new System.Drawing.Point(541, 102);
+            this.BTN_newbackup.Name = "BTN_newbackup";
+            this.BTN_newbackup.Size = new System.Drawing.Size(221, 43);
+            this.BTN_newbackup.TabIndex = 27;
+            this.BTN_newbackup.Text = "Add a new backup folder";
+            this.BTN_newbackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_newbackup.UseVisualStyleBackColor = true;
             // 
             // FrmBackup
             // 
@@ -254,7 +258,7 @@ namespace Backup.APP.Views.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1667, 770);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.BTN_newbackup);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel5);
@@ -273,7 +277,7 @@ namespace Backup.APP.Views.Forms
             this.groupBox1.PerformLayout();
             this.P_top.ResumeLayout(false);
             this.P_top.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PB_logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -282,23 +286,23 @@ namespace Backup.APP.Views.Forms
 
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
-        private System.Windows.Forms.TreeView Tv_backups;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private UcNewBackup ucNewBackup1;
-        private System.Windows.Forms.Button BTN_close;
-        private System.Windows.Forms.Button BTN_minimize;
-        private System.Windows.Forms.Panel P_top;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Button BTN_usermenu;
-        private System.Windows.Forms.Button BTN_settings;
-        private System.Windows.Forms.Button button2;
         public System.Windows.Forms.Button BTN_theme;
+        public System.Windows.Forms.Panel P_top;
+        public UcNewBackup ucNewBackup1;
+        public System.Windows.Forms.PictureBox PB_logo;
+        public System.Windows.Forms.Button BTN_newbackup;
+        public System.Windows.Forms.Button BTN_close;
+        public System.Windows.Forms.Button BTN_minimize;
+        public System.Windows.Forms.Button BTN_usermenu;
+        public System.Windows.Forms.Button BTN_settings;
+        public System.Windows.Forms.TreeView Tv_backups;
     }
 }
 

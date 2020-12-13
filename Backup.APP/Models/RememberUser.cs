@@ -1,10 +1,12 @@
-﻿namespace Backup.APP.Models
+﻿using Backup.APP.Classes.Themes;
+
+namespace Backup.APP.Models
 {
     public class RememberUser
     {
         public string LastDirectorySource { get; set; }
         public string LastDirectoryTarget { get; set; }
-        public string Theme { get; set; }
+        public string Theme { get; set; } = nameof(DarkTheme);
     }
 }
  
