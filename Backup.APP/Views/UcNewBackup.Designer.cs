@@ -30,7 +30,6 @@ namespace Backup.APP.Views
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UcNewBackup));
-            this.BTN_save = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.BTN_newsource = new System.Windows.Forms.Button();
             this.TXT_source = new System.Windows.Forms.TextBox();
@@ -66,22 +65,6 @@ namespace Backup.APP.Views
             ((System.ComponentModel.ISupportInitialize)(this.NUP_hours)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // BTN_save
-            // 
-            this.BTN_save.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_save.FlatAppearance.BorderSize = 0;
-            this.BTN_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BTN_save.Image = ((System.Drawing.Image)(resources.GetObject("BTN_save.Image")));
-            this.BTN_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTN_save.Location = new System.Drawing.Point(945, 499);
-            this.BTN_save.Name = "BTN_save";
-            this.BTN_save.Size = new System.Drawing.Size(100, 50);
-            this.BTN_save.TabIndex = 0;
-            this.BTN_save.Text = "Save";
-            this.BTN_save.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BTN_save.UseVisualStyleBackColor = true;
             // 
             // BTN_newsource
             // 
@@ -399,7 +382,6 @@ namespace Backup.APP.Views
             this.Controls.Add(this.BTN_newtarget);
             this.Controls.Add(this.TXT_source);
             this.Controls.Add(this.BTN_newsource);
-            this.Controls.Add(this.BTN_save);
             this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "UcNewBackup";
             this.Size = new System.Drawing.Size(1092, 566);
@@ -436,7 +418,6 @@ namespace Backup.APP.Views
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
-        public System.Windows.Forms.Button BTN_save;
         public System.Windows.Forms.Button BTN_newsource;
         public System.Windows.Forms.Button BTN_newtarget;
         public System.Windows.Forms.TextBox TXT_source;

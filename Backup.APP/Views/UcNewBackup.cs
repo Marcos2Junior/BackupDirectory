@@ -1,4 +1,5 @@
-﻿using Backup.APP.Library;
+﻿using Backup.APP.Classes;
+using Backup.APP.Library;
 using Backup.APP.Models;
 using Backup.APP.Views.Forms;
 using System;
@@ -14,20 +15,13 @@ namespace Backup.APP.Views
 {
     public partial class UcNewBackup : UserControl
     {
-        public FoldersBackupModel FoldersBackupModel { get; private set; }
+        public FoldersBackupModel FoldersBackupModel { get; set; }
+        public FileInfo[] FilesIgnore { get; set; }
         public UcNewBackup()
         {
             InitializeComponent();
             EnabledIntervalValueChanged(true);
             AddEvents();
-        }
-
-        private void Load()
-        {
-            if (FoldersBackupModel != null)
-            {
-                //txt
-            }
         }
 
 
@@ -103,15 +97,15 @@ namespace Backup.APP.Views
                             frm.ucLoading1.UpdateProgressBar(0, "adding directory path in user memory");
                             System.Threading.Thread.Sleep(1000);
 
-                            var files = new DirectoryInfo(folderBrowserDialog1.SelectedPath).GetFiles("*.*", SearchOption.AllDirectories);
+                            FilesIgnore = new DirectoryInfo(folderBrowserDialog1.SelectedPath).GetFiles("*.*", SearchOption.AllDirectories);
 
-                            frm.ucLoading1.UpdateProgressBar(0, $"selecting {files.Length} files");
+                            frm.ucLoading1.UpdateProgressBar(0, $"selecting {FilesIgnore.Length} files");
                             System.Threading.Thread.Sleep(1000);
 
-                            for (int i = 0; i < files.Length; i++)
+                            for (int i = 0; i < FilesIgnore.Length; i++)
                             {
-                                string fileName = $"{files[i].Directory.Name} / {files[i].Name}";
-                                frm.ucLoading1.UpdateProgressBar(SelectPercentToProgress(i, files.Length), $"checking file {fileName }");
+                                string fileName = $"{i}-{FilesIgnore[i].Directory.Name} / {FilesIgnore[i].Name}";
+                                frm.ucLoading1.UpdateProgressBar(SelectPercentToProgress(i, FilesIgnore.Length), $"checking file {fileName }");
                                 CLB_ignoreFiles.Invoke(new Action(() => CLB_ignoreFiles.Items.Add(fileName)));
                             }
 
@@ -119,6 +113,7 @@ namespace Backup.APP.Views
 
                             System.Threading.Thread.Sleep(1000);
                             frm.Invoke(new Action(() => frm.ucNewBackup1.BringToFront()));
+                            frm.Invoke(new Action(() => frm.BTN_save.BringToFront()));
                         }));
 
                     }
@@ -163,6 +158,15 @@ namespace Backup.APP.Views
         {
             BTN_newsource.Click += new EventHandler(LoadDirectory);
             BTN_newtarget.Click += new EventHandler(LoadDirectory);
+        }
+
+        public void ClearControls()
+        {
+            TXT_namedescription.Clear();
+            TXT_source.Clear();
+            TXT_target.Clear();
+            CLB_ignoreFiles.Items.Clear();
+            FilesIgnore = null;
         }
     }
 }

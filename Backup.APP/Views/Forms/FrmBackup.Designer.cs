@@ -49,7 +49,7 @@ namespace Backup.APP.Views.Forms
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.BTN_newbackup = new System.Windows.Forms.Button();
+            this.BTN_addnewbackup = new System.Windows.Forms.Button();
             this.ucWelcome1 = new Backup.APP.Views.UcWelcome();
             this.ucIndex1 = new Backup.APP.Views.UcIndex();
             this.BTN_info = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@ namespace Backup.APP.Views.Forms
             this.ucSettings1 = new Backup.APP.Views.UcSettings();
             this.ucActivity1 = new Backup.APP.Views.UcActivity();
             this.ucLoading1 = new Backup.APP.Views.UcLoading();
+            this.BTN_save = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.P_top.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PB_logo)).BeginInit();
@@ -255,22 +256,22 @@ namespace Backup.APP.Views.Forms
             this.panel6.Size = new System.Drawing.Size(1659, 4);
             this.panel6.TabIndex = 26;
             // 
-            // BTN_newbackup
+            // BTN_addnewbackup
             // 
-            this.BTN_newbackup.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BTN_newbackup.FlatAppearance.BorderSize = 0;
-            this.BTN_newbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BTN_newbackup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.BTN_newbackup.ForeColor = System.Drawing.SystemColors.Control;
-            this.BTN_newbackup.Image = ((System.Drawing.Image)(resources.GetObject("BTN_newbackup.Image")));
-            this.BTN_newbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.BTN_newbackup.Location = new System.Drawing.Point(372, 2);
-            this.BTN_newbackup.Name = "BTN_newbackup";
-            this.BTN_newbackup.Size = new System.Drawing.Size(165, 38);
-            this.BTN_newbackup.TabIndex = 27;
-            this.BTN_newbackup.Text = "New Backup";
-            this.BTN_newbackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.BTN_newbackup.UseVisualStyleBackColor = true;
+            this.BTN_addnewbackup.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTN_addnewbackup.FlatAppearance.BorderSize = 0;
+            this.BTN_addnewbackup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_addnewbackup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BTN_addnewbackup.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTN_addnewbackup.Image = ((System.Drawing.Image)(resources.GetObject("BTN_addnewbackup.Image")));
+            this.BTN_addnewbackup.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTN_addnewbackup.Location = new System.Drawing.Point(372, 2);
+            this.BTN_addnewbackup.Name = "BTN_addnewbackup";
+            this.BTN_addnewbackup.Size = new System.Drawing.Size(165, 38);
+            this.BTN_addnewbackup.TabIndex = 27;
+            this.BTN_addnewbackup.Text = "New Backup";
+            this.BTN_addnewbackup.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_addnewbackup.UseVisualStyleBackColor = true;
             // 
             // ucWelcome1
             // 
@@ -310,7 +311,7 @@ namespace Backup.APP.Views.Forms
             this.panel1.Controls.Add(this.P_selectedButton);
             this.panel1.Controls.Add(this.BTN_activity);
             this.panel1.Controls.Add(this.BTN_index);
-            this.panel1.Controls.Add(this.BTN_newbackup);
+            this.panel1.Controls.Add(this.BTN_addnewbackup);
             this.panel1.Controls.Add(this.BTN_info);
             this.panel1.Controls.Add(this.BTN_settings);
             this.panel1.Controls.Add(this.BTN_usermenu);
@@ -406,12 +407,31 @@ namespace Backup.APP.Views.Forms
             this.ucLoading1.Size = new System.Drawing.Size(1079, 577);
             this.ucLoading1.TabIndex = 34;
             // 
+            // BTN_save
+            // 
+            this.BTN_save.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BTN_save.FlatAppearance.BorderSize = 0;
+            this.BTN_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BTN_save.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.BTN_save.ForeColor = System.Drawing.SystemColors.Control;
+            this.BTN_save.Image = ((System.Drawing.Image)(resources.GetObject("BTN_save.Image")));
+            this.BTN_save.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.BTN_save.Location = new System.Drawing.Point(1486, 664);
+            this.BTN_save.Name = "BTN_save";
+            this.BTN_save.Size = new System.Drawing.Size(103, 48);
+            this.BTN_save.TabIndex = 35;
+            this.BTN_save.Text = "Save";
+            this.BTN_save.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.BTN_save.UseVisualStyleBackColor = true;
+            // 
             // FrmBackup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Desktop;
             this.ClientSize = new System.Drawing.Size(1667, 770);
+            this.Controls.Add(this.BTN_save);
+            this.Controls.Add(this.ucNewBackup1);
             this.Controls.Add(this.ucLoading1);
             this.Controls.Add(this.ucActivity1);
             this.Controls.Add(this.ucSettings1);
@@ -425,7 +445,6 @@ namespace Backup.APP.Views.Forms
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.P_top);
-            this.Controls.Add(this.ucNewBackup1);
             this.Controls.Add(this.groupBox1);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -461,7 +480,7 @@ namespace Backup.APP.Views.Forms
         public System.Windows.Forms.Panel P_top;
         public UcNewBackup ucNewBackup1;
         public System.Windows.Forms.PictureBox PB_logo;
-        public System.Windows.Forms.Button BTN_newbackup;
+        public System.Windows.Forms.Button BTN_addnewbackup;
         public System.Windows.Forms.Button BTN_close;
         public System.Windows.Forms.Button BTN_minimize;
         public System.Windows.Forms.Button BTN_usermenu;
@@ -479,6 +498,7 @@ namespace Backup.APP.Views.Forms
         private UcSettings ucSettings1;
         private UcActivity ucActivity1;
         public UcLoading ucLoading1;
+        public System.Windows.Forms.Button BTN_save;
     }
 }
 

@@ -156,7 +156,7 @@
         geRLodBby4MHV/IkFWL+0PL/hErlN0wQS3e9vzCyAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="BTN_newbackup.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="BTN_addnewbackup.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAARZJREFUSEvt
         lksKwkAQRLPxBF5FcKGgeBMvoxcQxc/ae/i7hwtRcKlrHau7ayJKNDNJ3PmgoasnVSNDTJI452qoIWqP
@@ -199,6 +199,15 @@
         s8vfoYyyWrjGZosIHuEj6l00RdkZnuGFVdVDKMQV/pQlhlZXDYERxkofiDpGVpvDoY8P+IauUNc9+tmS
         E5zjb/GEx1p0jc+4Q9eoU935V8iDi3dTJLb6HB2mM6d0i5ItntaoWR2tF20sVkKzNFJJt6hb9Mk/WTTG
         7F9M0RuLldCskP3qlcX+Cs/7AIGgjrVtv/asAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="BTN_save.Image" type="System.Drawing.Bitmap, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAAABGdBTUEAALGPC/xhBQAAAMdJREFUSEvt
+        lkEKwjAQRUuhnkpEPJUL13oVL+B93KggrrzA+GfmC0mNaErMovbBh2Ym83+7SdqISAftoCNUgju0gdom
+        BAUN6bNkOwvMrXzc2EMztqx5snIAWx/hdoOlqAYOkIf5OsYaX8DtBkspP/2ytkaQsq4VdKsVJH8SBOac
+        ywJzCx9/5e0blGb8QYPOuBTwCs+9OIh7ikFbYwrKgrbGFJQFbY1xBl388adBZ12Ev1uDrocU8AqvjK0W
+        nj+QV60URj3hLd0DEkf4zNm1gBUAAAAASUVORK5CYII=
 </value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing.Common" mimetype="application/x-microsoft.net.object.bytearray.base64">

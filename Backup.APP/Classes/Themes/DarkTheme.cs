@@ -16,7 +16,7 @@ namespace Backup.APP.Classes.Themes
             #endregion
             #region forecolor
             openForms.FrmBackup.ForeColor = SystemColors.Control;
-            openForms.FrmBackup.BTN_newbackup.ForeColor = SystemColors.Control;
+            openForms.FrmBackup.BTN_addnewbackup.ForeColor = SystemColors.Control;
             openForms.FrmBackup.Tv_backups.ForeColor = SystemColors.Control;
             #endregion
             #region ucNewBackup1
@@ -46,7 +46,7 @@ namespace Backup.APP.Classes.Themes
 
             openForms.FrmBackup.ucNewBackup1.BTN_newsource.Image = Resources.newfolder;
             openForms.FrmBackup.ucNewBackup1.BTN_newtarget.Image = Resources.newfolder;
-            openForms.FrmBackup.ucNewBackup1.BTN_save.Image = Resources.save;
+            //openForms.FrmBackup.ucNewBackup1.BTN_save.Image = Resources.save;
             #endregion
             #region images
             openForms.FrmBackup.BTN_close.Image = Resources.close;
@@ -55,7 +55,7 @@ namespace Backup.APP.Classes.Themes
             openForms.FrmBackup.BTN_minimize.Image = Resources.minimize;
             openForms.FrmBackup.PB_logo.Image = Resources.logo;
             openForms.FrmBackup.BTN_theme.Image = Resources.darktheme;
-            openForms.FrmBackup.BTN_newbackup.Image = Resources.newfolder;
+            openForms.FrmBackup.BTN_addnewbackup.Image = Resources.newfolder;
             #endregion
             #endregion
         }

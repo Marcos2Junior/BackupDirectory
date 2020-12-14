@@ -31,7 +31,7 @@ namespace Backup.APP.Views.Forms
             BTN_activity.Click += new EventHandler(ClickButtonsMenu);
             BTN_index.Click += new EventHandler(ClickButtonsMenu);
             BTN_info.Click += new EventHandler(ClickButtonsMenu);
-            BTN_newbackup.Click += new EventHandler(ClickButtonsMenu);
+            BTN_addnewbackup.Click += new EventHandler(ClickButtonsMenu);
             BTN_settings.Click += new EventHandler(ClickButtonsMenu);
             BTN_usermenu.Click += new EventHandler(ClickButtonsMenu);
             P_top.MouseDown += new MouseEventHandler(MouseDown);
@@ -56,13 +56,28 @@ namespace Backup.APP.Views.Forms
             }
         }
 
-        private void AddNewFolderBackup()
+        private void AddNewFolderBackup(object sender, EventArgs e)
         {
-            var folderBackup = new FoldersBackupModel("name", new DirectoryInfo(""), new DirectoryInfo(""), new List<FileInfo> { }, null);
-            Properties.SettingsModel.FoldersBackupModels.Add(folderBackup);
-            AddTreeNodeBackup(folderBackup);
+            List<FileInfo> fileInfos = new List<FileInfo>();
+
+            foreach (string fileChecked in ucNewBackup1.CLB_ignoreFiles.CheckedItems)
+            {
+                fileInfos.Add(ucNewBackup1.FilesIgnore[int.Parse(fileChecked.Substring(0, 1))]);
+            }
+
+            var FoldersBackupModel = new FoldersBackupModel(
+                ucNewBackup1.TXT_namedescription.Text,
+                new DirectoryInfo(ucNewBackup1.TXT_source.Text),
+                new DirectoryInfo(ucNewBackup1.TXT_target.Text),
+                fileInfos, null);
+
+            Properties.SettingsModel.FoldersBackupModels.Add(FoldersBackupModel);
+            AddTreeNodeBackup(FoldersBackupModel);
 
             new FoldersBackup(Properties.SettingsModel).WriteSettings();
+
+            ucNewBackup1.ClearControls();
+            BTN_save.Click -= new EventHandler(AddNewFolderBackup); //nao ta legal.. preciso que ao cadastrar saia da pagina de cadastro, pode sei la enviar para a pagina de atividades...
         }
 
 
@@ -74,13 +89,17 @@ namespace Backup.APP.Views.Forms
         {
             List<TreeNode> filesIgnored = new List<TreeNode>();
 
-            model.FilesIgnore.ForEach(x => filesIgnored.Add(new TreeNode($"{x.Name} . {x.Extension}")));
+            model.FilesIgnore.ForEach(x =>
+            {
+                var fileInfo = new FileInfo(x);
+                filesIgnored.Add(new TreeNode($"{fileInfo.Directory.Name} / {fileInfo.Name}"));
+            });
 
             Tv_backups.Nodes.Add(
                 new TreeNode(
                     model.NameDescription, new TreeNode[] {
-                            new TreeNode(model.Source.Name),
-                            new TreeNode(model.Target.Name),
+                            new TreeNode($"Source/ {new DirectoryInfo(model.Source).Name}"),
+                            new TreeNode($"Target/ {new DirectoryInfo(model.Target).Name}"),
                             new TreeNode("files ignored", filesIgnored.ToArray()),
                             new TreeNode(model.LastBackup.ToString())
                     }));
@@ -252,6 +271,9 @@ namespace Backup.APP.Views.Forms
             var btn = (Button)sender;
             SelectedButtonMenu(btn.Location.X, btn.Size.Width);
 
+            BTN_save.Click -= null; // isso aqui nao funciona ... depois testar se add -= para todos os metodos vai dar algum pau
+            //ideia é deixar esse botao para salvar todos os usercontrol.. ou seja, ele vai chamar o metodo de addnewfolder, no futuro vai ter o metodo salvar alteracoes usuario.. assim por diante
+
             switch (btn.Name)
             {
                 case nameof(BTN_activity):
@@ -263,8 +285,10 @@ namespace Backup.APP.Views.Forms
                 case nameof(BTN_info):
                     ucInfo1.BringToFront();
                     break;
-                case nameof(BTN_newbackup):
+                case nameof(BTN_addnewbackup):
                     ucNewBackup1.BringToFront();
+                    BTN_save.BringToFront();
+                    BTN_save.Click += new EventHandler(AddNewFolderBackup);
                     break;
                 case nameof(BTN_settings):
                     ucSettings1.BringToFront();
@@ -292,13 +316,6 @@ namespace Backup.APP.Views.Forms
             ucLoading1.BringToFront();
             Task task = new Task(action);
             task.Start();
-        }
-
-     
-
-        private void BTN_activity_Click(object sender, EventArgs e)
-        {
-           
         }
     }
 }
