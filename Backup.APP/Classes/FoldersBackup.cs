@@ -47,11 +47,12 @@ namespace Backup.APP.Classes
             try
             {
                 string result = File.ReadAllText(SettingsModel.User.FileSettings);
-                SettingsModel = JsonSerializer.Deserialize<SettingsModel>(Encript.Decrypt(result, SettingsModel.User.Password));
+                var resultDecript = Encript.Decrypt(result, SettingsModel.User.Password);
+                SettingsModel = JsonSerializer.Deserialize<SettingsModel>(resultDecript);
 
                 return SettingsModel != null;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return false;
             }

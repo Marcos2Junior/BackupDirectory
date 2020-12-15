@@ -50,6 +50,7 @@ namespace Backup.APP.Views.Forms
         /// </summary>
         private void LoadTreeViewBackup()
         {
+            Tv_backups.Nodes.Clear();
             foreach (var item in Properties.SettingsModel.FoldersBackupModels)
             {
                 AddTreeNodeBackup(item);
@@ -101,7 +102,7 @@ namespace Backup.APP.Views.Forms
                             new TreeNode($"Source/ {new DirectoryInfo(model.Source).Name}"),
                             new TreeNode($"Target/ {new DirectoryInfo(model.Target).Name}"),
                             new TreeNode("files ignored", filesIgnored.ToArray()),
-                            new TreeNode(model.LastBackup.ToString())
+                            new TreeNode(model.LastBackup.HasValue ? model.LastBackup.ToString() : "never performed")
                     }));
         }
 
