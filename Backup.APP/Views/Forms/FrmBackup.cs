@@ -34,9 +34,7 @@ namespace Backup.APP.Views.Forms
             BTN_addnewbackup.Click += new EventHandler(ClickButtonsMenu);
             BTN_settings.Click += new EventHandler(ClickButtonsMenu);
             BTN_usermenu.Click += new EventHandler(ClickButtonsMenu);
-            P_top.MouseDown += new MouseEventHandler(MouseDown);
-            P_top.MouseMove += new MouseEventHandler(MouseMove);
-            P_top.MouseUp += new MouseEventHandler(MouseUp);
+            AddMoveFormControl(new Control[] { P_top });
         }
 
         private void UserLoad()

@@ -84,12 +84,7 @@ namespace Backup.APP.Views.Forms
         /// </summary>
         private void AddEvents()
         {
-            panel5.MouseMove += new MouseEventHandler(MouseMove);
-            panel5.MouseUp += new MouseEventHandler(MouseUp);
-            panel5.MouseDown += new MouseEventHandler(MouseDown);
-            label3.MouseMove += new MouseEventHandler(MouseMove);
-            label3.MouseUp += new MouseEventHandler(MouseUp);
-            label3.MouseDown += new MouseEventHandler(MouseDown);
+            AddMoveFormControl(new Control[] { panel5, label3 });
         }
 
         /// <summary>
@@ -229,22 +224,6 @@ namespace Backup.APP.Views.Forms
             ChangeGB();
             errorProvider1.Clear();
         }
-        #endregion
-
-        #region 4.2 - press key
-        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Btn_Login.PerformClick();
-            }
-        }
-        #endregion
-
-
-       
-
-        #endregion
 
         private void Lbl_forgotPassword_Click(object sender, EventArgs e)
         {
@@ -266,8 +245,21 @@ namespace Backup.APP.Views.Forms
             {
                 message = "Enter your username first";
             }
-            
+
             MessageBox.Show(message, string.Empty, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+        #endregion
+
+        #region 4.2 - press key
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Btn_Login.PerformClick();
+            }
+        }
+        #endregion
+
+        #endregion
     }
 }

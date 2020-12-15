@@ -16,6 +16,9 @@ namespace Backup.APP
         static void Main()
         {
             Directory.CreateDirectory(Properties.DirectorySettings.FullName);
+
+
+
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

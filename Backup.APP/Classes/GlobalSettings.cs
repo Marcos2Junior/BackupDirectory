@@ -1,8 +1,10 @@
 ﻿using Backup.APP.Library;
 using Backup.APP.Models;
+using Backup.APP.Models.Languages;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using System.Windows.Forms;
 
 namespace Backup.APP.Classes
 {
@@ -24,7 +26,22 @@ namespace Backup.APP.Classes
             {
             }
 
+            GetLanguageDefault(globalUser.LanguageDefault);
+
             return globalUser;
+        }
+
+        public static void GetLanguageDefault(string languageDefault)
+        {
+            switch (languageDefault)
+            {
+                case nameof(Resources.pt_br):
+                    Properties.Language = JsonSerializer.Deserialize<Language>(System.Text.Encoding.UTF8.GetString(Resources.pt_br));
+                    break;
+                default:
+                    Properties.Language = JsonSerializer.Deserialize<Language>(System.Text.Encoding.UTF8.GetString(Resources.pt_br));
+                    break;
+            }
         }
 
         public static void WriteConfig()
