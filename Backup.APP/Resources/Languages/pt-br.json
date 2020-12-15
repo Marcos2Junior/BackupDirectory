@@ -1,0 +1,18 @@
+{
+  "frmLogin": {
+    "tittle": "DirectoryBackup",
+    "password": "Senha",
+    "checkPassword": "Confirme a senha",
+    "userName": "Usuario",
+    "newAccount": "Nova conta",
+    "needHelp": "Precisa de ajuda?",
+    "forgotPassword": "Esqueceu sua senha?",
+    "passwordHint": "Dica de senha",
+    "login": "Entrar",
+    "create": "Cadastrar",
+    "close": "Fechar",
+    "back": "Voltar",
+    "termsAndConditions": "Concordo com os termos e condicoes"
+  },
+  "nameLanguage": "Portugues/Brasil"
+}
